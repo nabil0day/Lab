@@ -11,11 +11,11 @@ include "../Control/Process.php"
         </title><br><br><br><br><br><br>
         <center><h1>Hello!!</h1> </center>
         <center><h2>Would You Like TO </h2></center><br>
-        <center> <button type="button">Register</button><br></center>
+        <center> <a href="register.php">Register</a><br></center>
         <br>
         <center><h2> Or </h2></center>
         <br>
-        <center> <button type="button">Login</button><br></center>
+        <center> <a href="login.php">Login</a><br></center>
         
        
     </body>
