@@ -7,9 +7,7 @@ if (empty($_SESSION["username"])) {
 ?>
 <!DOCTYPE html>
 <html>
-<title>
-            EmployeeHomepage
-        </title>
+<title>  EmployeeHomepage </title>
 
 <body bgcolor="pink">  
 <center><h1>Welcome Back</h1> </center>
