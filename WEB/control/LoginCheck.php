@@ -1,5 +1,4 @@
 <?php
-session_start(); 
  
  setcookie("usercheck","visited",time()+86400);
 if(isset($_COOKIE["usercheck"]))
