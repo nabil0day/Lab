@@ -2,7 +2,7 @@
 $firstnameerr = $lastnameerr = $ageerr = $phoneerr =  $radioerr = "";
 $emailerr = $fileerr = $niderr =  $dataerr = $passworderr = $verifypassworderr= "";
 $count = 0;
-setcookie("visit","1",time())
+setcookie("visit","1",time());
 
 if (isset($_POST["Submit"])) {
 
