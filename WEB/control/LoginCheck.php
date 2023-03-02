@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
     } else {
         $_SESSION["username"] = $_POST['username'];
         $_SESSION["password"] = $_POST['password'];
-        header("Location: dashboard.php");
+        header("Location: EmployeeHome.php");
         exit;
     }
 }
