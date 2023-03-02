@@ -1,45 +1,42 @@
 <?php
+session_start();
+$error = "";
 include('../control/loginCheck.php');
 if(isset($_SESSION['username'])){
     header("location: EmployeeHomepage.php");
     exit();
 }
 ?>
+
 <html>
     <head>
-
+        <title>Login</title>
     </head>
     <body bgcolor="skyblue">  
-        <title>Login</title>
         <br><br><br><br><br><br>
-        <center><h1>Login</h1></center>
         <center>
-            <table>
-                <form action="" method="post">
-
+            <h1>Login</h1>
+            <form action="" method="post">
+                <table>
                     <tr>
-                        <th>User Name: </th>
-                        <th><input type="text" name="username" size="20"/> </th>
+                        <td>User Name:</td>
+                        <td><input type="text" name="username" size="20"/></td>
                     </tr>
                     <tr>
-                        <th><b>Password: </b></th>
-                        <th><input type="password" name="password" size="20"/> </th>
+                        <td><b>Password:</b></td>
+                        <td><input type="password" name="password" size="20"/></td>
                     </tr>
                     <tr>
-                        <th></th>
-                        <th><button type="submit" name="submit">Submit</button></th>
-                        <th></th>
+                        <td></td>
+                        <td><button type="submit" name="submit">Submit</button></td>
                     </tr>
                     <tr>
-                        <th></th>
-                        <th><button type="reset">Reset</button></th>
-                        <th></th>
+                        <td></td>
+                        <td><button type="reset">Reset</button></td>
                     </tr>
-                </form>
-            </table>
+                </table>
+            </form>
+            <?php echo $error; ?>
         </center>
-        <?php 
-            echo $error; 
-         ?>
     </body>
 </html>
