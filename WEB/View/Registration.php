@@ -1,5 +1,5 @@
 <?php
-include "../control/Process.php";
+include "../control/registrationcheck.php";
 ?>
 
 <html>
