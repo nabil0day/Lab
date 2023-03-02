@@ -10,6 +10,7 @@ include "../control/registrationcheck.php";
 	<br><br><br>
 	<center><h1>Registration form</h1></center>
 	<center>
+		<?php $dataerr = ''; ?>
 		<form action="" method="post" enctype="multipart/form-data">
 			<table>
 				<tr>
