@@ -6,7 +6,7 @@ include "../control/registrationcheck.php";
 <head>
 	<title>Registration form</title>
 </head>
-<body bgcolor="Yellow">
+<body bgcolor="green">
 	<br><br><br>
 	<center><h1>Registration form</h1></center>
 	<center>
@@ -59,7 +59,7 @@ include "../control/registrationcheck.php";
 				</tr>
 				<tr>
 					<th></th>
-					<th><button type="submit" name="submit">Submit</button></th>
+					<th><button type="submit" name="submit" formaction="../Control/registrationcheck.php" >Submit</button></th>
 					<th></th>
 				</tr>
 				<tr>
