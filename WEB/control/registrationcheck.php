@@ -1,47 +1,74 @@
 <?php
-session_start();
 
-$error = "";
+if(isset($_POST['submit'])){
 
-if (isset($_POST['submit'])) {
-  // check for empty fields
-  if (empty($_POST['firstname']) || empty($_POST['lastname']) || empty($_POST['address']) || empty($_POST['phone']) || empty($_POST['email']) || empty($_POST['gender']) || empty($_POST['password']) || empty($_POST['confermpassword'])) {
-    $error = "All fields are required!";
-  } else {
-    // validate first name
-    if (!preg_match("/^[a-zA-Z ]*$/", $_POST['firstname'])) {
-      $error = "Invalid first name format!";
-    }
-    // validate last name
-    else if (!preg_match("/^[a-zA-Z ]*$/", $_POST['lastname'])) {
-      $error = "Invalid last name format!";
-    }
-    // validate phone number
-    else if (!preg_match("/^[0-9]*$/", $_POST['phone'])) {
-      $error = "Invalid phone number format!";
-    }
-    // validate email
-    else if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-      $error = "Invalid email format!";
-    }
-    // validate password
-    else if ($_POST['password'] != $_POST['confermpassword']) {
-      $error = "Passwords do not match!";
+    
+    if(empty($_POST['firstname'])){
+        $firstnameerr = "First name is required";
     } else {
-      // validation successful, store data in session
-      $_SESSION['registration_data'] = array(
-        'firstname' => $_POST['firstname'],
-        'lastname' => $_POST['lastname'],
-        'address' => $_POST['address'],
-        'phone' => $_POST['phone'],
-        'email' => $_POST['email'],
-        'gender' => $_POST['gender'],
-        'password' => $_POST['password']
-      );
-      header("Location: '../View/Registration.php'");
-      exit();
+        $firstname = $_POST['firstname'];
     }
-  }
+
+    
+    if(empty($_POST['lastname'])){
+        $lastnameerr = "Last name is required";
+    } else {
+        $lastname = $_POST['lastname'];
+    }
+
+    
+    if(empty($_POST['phone'])){
+        $phoneerr = "Phone number is required";
+    } else {
+        $phone = $_POST['phone'];
+    }
+
+    if(empty($_POST['email'])){
+        $emailerr = "Email address is required";
+    } else {
+        $email = $_POST['email'];
+    }
+
+    
+    if(empty($_POST['gender'])){
+        $radioerr = "Gender is required";
+    } else {
+        $gender = $_POST['gender'];
+    }
+
+    
+    if(empty($_FILES['CVfile']['name'])){
+        $CVerr = "CV file is required";
+    } else {
+        $CVfile = $_FILES['CVfile']['name'];
+    }
+
+    
+    if(empty($_FILES['NIDfile']['name'])){
+        $niderr = "NID file is required";
+    } else {
+        $NIDfile = $_FILES['NIDfile']['name'];
+    }
+
+   
+    if(empty($_POST['password'])){
+        $passworderr = "Password is required";
+    } else {
+        $password = $_POST['password'];
+    }
+
+    
+    if(empty($_POST['confermpassword'])){
+        $confermpassworderr = "Confirm password is required";
+    } else {
+        $confermpassword = $_POST['confermpassword'];
+    }
+
+    
+    if(isset($firstnameerr) || isset($lastnameerr) || isset($phoneerr) || isset($emailerr) || isset($radioerr) || isset($CVerr) || isset($niderr) || isset($passworderr) || isset($confermpassworderr)){
+        $dataerr = "Please fill in all the required fields.";
+    } else {
+
+    }
 }
 ?>
-
