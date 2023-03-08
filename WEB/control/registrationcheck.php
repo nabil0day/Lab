@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
         'gender' => $_POST['gender'],
         'password' => $_POST['password']
       );
-      header("Location: '../View/login.php'");
+      header("Location: '../View/Registration.php'");
       exit();
     }
   }
