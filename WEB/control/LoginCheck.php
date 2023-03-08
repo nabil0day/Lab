@@ -22,20 +22,4 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
-<html>
-<head>
-    <title>Login form</title>
-</head>
-<body>
-    <form action="" method="post">
-        <?php if (!empty($error)): ?>
-            <p><?php echo $error; ?></p>
-        <?php endif; ?>
-        <label>Username:</label><br>
-        <input type="text" name="username"><br><br>
-        <label>Password:</label><br>
-        <input type="password" name="password"><br><br>
-        <button type="submit" name="submit">Submit</button>
-    </form>
-</body>
-</html>
+
