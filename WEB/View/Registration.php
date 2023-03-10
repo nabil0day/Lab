@@ -1,5 +1,5 @@
 <?php
-include "../control/registrationcheck.php";
+require_once "../control/registrationcheck.php";
 ?>
 
 <html>
@@ -59,7 +59,7 @@ include "../control/registrationcheck.php";
 				</tr>
 				<tr>
 					<th></th>
-					<th><button type="submit" name="submit" formaction="../Control/registrationcheck.php" >Submit</button></th>
+					<th><button type="submit" name="submit" formaction="login.php" >Submit</button></th>
 					<th></th>
 				</tr>
 				<tr>
