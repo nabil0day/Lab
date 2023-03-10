@@ -19,7 +19,7 @@ if(isset($_SESSION['username'])){
             <form action="" method="post">
                 <table>
                     <tr>
-                        <td>User Name:</td>
+                        <td><b>User Name:</b></td>
                         <td><input type="text" name="username" size="20"/></td>
                     </tr>
                     <tr>
@@ -33,6 +33,10 @@ if(isset($_SESSION['username'])){
                     <tr>
                         <td></td>
                         <td><button type="reset">Reset</button></td>
+                    </tr>
+                    <tr>
+                        <td> <h3>New Here? <a href="Registration.php"> Signup</a> </h3> </td>
+                    
                     </tr>
                 </table>
             </form>
