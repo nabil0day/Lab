@@ -9,13 +9,10 @@ if (isset($_POST["Submit"])) {
     $firstname = $_POST["firstname"];
 
     if (empty($firstname) || strlen($firstname) < 2) {
-
-        $firstnameerr = "->Please enter a valid a name";
-    } elseif(is_numeric("firstname")){
+        $firstnameerr = "->Please enter a valid name";
+    } elseif(is_numeric($firstname)){
         $firstnameerr = "->Name can't be any number";
-    }
-
-    else {
+    } else {
         $count++;
         $firstnameerr = "->Your first name is " . $firstname;
     }
@@ -23,32 +20,27 @@ if (isset($_POST["Submit"])) {
     $lastname = $_POST["lastname"];
 
     if (empty($lastname)) {
-
-        $lastnameerr = "->Please enter a valid a name";
-    } elseif(is_numeric("lastname")){
+        $lastnameerr = "->Please enter a valid name";
+    } elseif(is_numeric($lastname)){
         $lastnameerr = "->Name can't be any number";
-    }
-    else {
+    } else {
         $count++;
         $lastnameerr = "->Your last name is " . $lastname;
     }
 
-     $address = $_POST["address"];
+    $address = $_POST["address"];
 
     if (empty($address)) {
-
         $addresserr = "->Please enter a valid address";
-    } elseif(is_numeric("address")){
-        $addresserr = "->Aaddress can't be any number";
-    }
-    else {
+    } elseif(is_numeric($address)){
+        $addresserr = "->Address can't be any number";
+    } else {
         $count++;
         $addresserr = "->Your address is " . $address;
     }
      
     $phone = $_POST["phone"];
-    if (!is_numeric("$phone")) {
-
+    if (!is_numeric($phone)) {
         $phoneerr = "->Please enter your number";
     } else {
         $count++;
@@ -81,77 +73,68 @@ if (isset($_POST["Submit"])) {
         else{
             $fileerr="->Please choose a jpg file under 25mb";
         }
+    }
+    else{
+        $fileerr="->Please choose a jpg file under 25mb";
+    }
+
+    if ($_FILES["NIDfile"]["type"]=="image/jpeg" ){
+        if(move_uploaded_file($_FILES["NIDfile"]["tmp_name"], "../Upload/".$firstname.date("Y-m-d").".jpg")){
+            $count++;
+            $niderr="->You have selected ".$_FILES["NIDfile"]["name"];
         }
         else{
-            $fileerr="->Please choose a jpg file under 25mb";
+            $niderr="->Please choose a jpg file under 25mb";
         }
+    }
+    else{
+        $niderr="->Please choose a jpg file under 25mb";
+    }
 
-     if ($_FILES["NIDfile"]["type"]=="image/jpeg" ){
-            if(move_uploaded_file($_FILES["NIDfile"]["tmp_name"], "../Upload/".$firstname.date("Y-m-d").".jpg")){
-                $count++;
-                $fileerr="->You have selected ".$_FILES["NIDfile"]["name"];
-                
-            }
-            else{
-                $fileerr="->Please choose a jpg file under 25mb";
-            }
-            }
-            else{
-                $fileerr="->Please choose a jpg file under 25mb";
-            }
-
-            $password = $_POST["password"];
-
-     if (!empty($password) || strlen($password)> 8) {
+    $age = $_POST["age"];
+    if (!is_numeric($age)) {
+        $ageerr = "->Please enter your age";
+    } else {
         $count++;
-      
+        $ageerr = "-> Your age is " . $age;
+    }
+
+    $password = $_POST["password"];
+    $verify_password = $_POST["verify_password"];
+
+    if (empty($password) || strlen($password) < 8) {
+        $passworderr = "->Please enter a valid password with at least 8 characters";
+    } elseif ($password != $verify_password) {
+        $verifypassworderr = "->Passwords do not match";
     } else {
-       
-        $passworderr = "->Please enter a password upto 8 letter,character and number";
-       
-     }
-     $confermpassword = $_POST["confermpassword"];
+        $count++;
+        $passworderr = "->Password is valid";
+    }
 
-     if ($password == $confermpassword && $password !="" ) {
+    $data = $_POST["data"];
 
-       $cnfermpassworderr = "->Password set successfully ";
-       $count++;
+    if (empty($data)) {
+        $dataerr = "->Please select an option";
     } else {
-        
-        $confermpassworderr = "-> Password do not matched";
-       
-     }
+        $count++;
+        $dataerr = "->You have selected " . $data;
+    }
 
-     if ($count != 10){
-        $dataerr= "Please fill up all the information";
-     }
-
-     else if ($count == 10) {
-     $formdata = array(
-    'First Name           :' => $firstname,
-    'Last  Name           :' => $lastname,
-    'Permanent Address    :' => $address,
-    'Phone Number         :' => $phone,
-    'Email                :' => $email,
-    'Gender               :' => $gender,
-    'Upload Your CV       :' => $CVfile,
-    'Upload Your NID Copy :' => $NIDfile,
-    'Password             :' => $password
-
-
-     );
-     $existingdata = file_get_contents('../Data/Data.json'); 
-     $tempJSONdata = json_decode($existingdata);
-     $tempJSONdata[] = $formdata;
-     $jsondata = json_encode($tempJSONdata, JSON_PRETTY_PRINT);
-     if (file_put_contents("../Data/Data.json", $jsondata)) {
-        $dataerr = "Data successfully saved ";
-     } else {
-        $dataerr = "No data saved";
-     }
- 
-    
- }
-
+    if ($count == 9) {
+        echo "All fields are valid. Thanks for submitting your information.";
+    } else {
+        echo "Please check the following errors:<br>";
+        echo $firstnameerr . "<br>";
+        echo $lastnameerr . "<br>";
+        echo $ageerr . "<br>";
+        echo $phoneerr . "<br>";
+        echo $emailerr . "<br>";
+        echo $radioerr . "<br>";
+        echo $fileerr . "<br>";
+        echo $niderr . "<br>";
+        echo $passworderr . "<br>";
+        echo $verifypassworderr . "<br>";
+        echo $dataerr . "<br>";
+    }
 }
-?>
+
