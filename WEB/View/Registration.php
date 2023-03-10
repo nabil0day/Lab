@@ -31,7 +31,7 @@ require_once "../control/registrationcheck.php";
 				</tr>
 				<tr>
 					<th><b>Email Address: </b></th>
-					<th><input type="text" id="email" name="email" size="20"/> <?php if(isset($emailerr)) echo $emailerr; ?></th>
+					<th><input type="email" name="email" size="20"/> <?php if(isset($emailerr)) echo $emailerr; ?></th>
 				</tr>
 				<tr>
 					<th><b>Gender: </b></th>
